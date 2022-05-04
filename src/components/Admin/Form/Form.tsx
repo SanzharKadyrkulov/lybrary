@@ -11,7 +11,7 @@ const initValues = {
 	title: '',
 	author: '',
 	category: '',
-	price: '',
+	price: 0,
 	img: '',
 };
 
@@ -41,6 +41,12 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 			...inpValues,
 			[e.target.name]: e.target.value,
 		};
+		if (e.target.name === 'price' && +e.target.value < 0) {
+			obj = {
+				...inpValues,
+				[e.target.name]: 0,
+			};
+		}
 		setInpValues(obj);
 	};
 
@@ -71,6 +77,7 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 					label='Название книги'
 					variant='outlined'
 					sx={{ my: 1 }}
+					required
 				/>
 				<TextField
 					name='author'
@@ -80,8 +87,9 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 					label='Автор'
 					variant='outlined'
 					sx={{ my: 1 }}
+					required
 				/>
-				<FormControl fullWidth>
+				<FormControl fullWidth required>
 					<InputLabel id='demo-simple-select-label'>Жанр</InputLabel>
 					<Select
 						labelId='demo-simple-select-label'
@@ -100,6 +108,7 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 					</Select>
 				</FormControl>
 				<TextField
+					required
 					type='number'
 					name='price'
 					value={inpValues.price}
@@ -110,6 +119,7 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 					sx={{ my: 1 }}
 				/>
 				<TextField
+					required
 					name='img'
 					value={inpValues.img}
 					onChange={(e) => handleChange(e)}

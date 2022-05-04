@@ -10,8 +10,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { Badge } from '@mui/material';
 
 export default function Header() {
+	const { wishLength } = useTypedSelector((store) => store.wish);
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
 	const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -45,16 +48,18 @@ export default function Header() {
 					>
 						Home
 					</Typography>
-					<Typography
-						// onClick={() => navigate('/wish')}
-						to='/wish'
-						variant='h6'
-						component={NavLink}
-						className='nav-link'
-						sx={{ flexGrow: 1, cursor: 'pointer' }}
-					>
-						WhishList
-					</Typography>
+					<Badge badgeContent={wishLength} color='warning'>
+						<Typography
+							// onClick={() => navigate('/wish')}
+							to='/wish'
+							variant='h6'
+							component={NavLink}
+							className='nav-link'
+							sx={{ flexGrow: 1, cursor: 'pointer' }}
+						>
+							WhishList
+						</Typography>
+					</Badge>
 					<Typography
 						// onClick={() => navigate('/wish')}
 						to='/admin'

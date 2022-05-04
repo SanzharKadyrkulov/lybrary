@@ -80,7 +80,7 @@ const List = () => {
 								</TableRow>
 							))
 						) : (
-							<h1>Нет продуктов</h1>
+							<h1>Нет книг</h1>
 						)}
 					</TableBody>
 				</Table>
@@ -96,7 +96,7 @@ const List = () => {
 								color: 'black',
 							}}
 						>
-							Добавить продукт
+							Добавить книгу
 						</Box>
 					</IconButton>
 				</Link>

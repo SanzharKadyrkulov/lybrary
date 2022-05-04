@@ -6,10 +6,47 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Home = () => {
 	const { books } = useTypedSelector((state) => state.book);
-	const { getBooks } = useActions();
+	const { getBooks, getWish } = useActions();
 	useEffect(() => {
 		getBooks();
+		getWish();
 	}, []);
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const [type, setType] = useState(searchParams.get('type') || 'all');
+
+	useEffect(() => {
+		if (searchParams.get('type')) {
+			setSearchParams({
+				type: type,
+			});
+		} else {
+			setSearchParams({});
+		}
+	}, []);
+
+	useEffect(() => {
+		getProducts();
+	}, [searchParams]);
+
+	useEffect(() => {
+		if (type === 'all') {
+			setSearchParams(paramsNoType());
+		} else {
+			setSearchParams(paramsWithType());
+		}
+	}, [page, type, slider]);
+
+	const handleReset = () => {
+		setType('all');
+		setSlider(minSliderValue);
+		setSearchParams({
+			_page: page,
+			_limit: PRODUCTS_LIMIT,
+			price_gte: minSliderValue,
+			q: '',
+		});
+	};
 
 	return (
 		<>

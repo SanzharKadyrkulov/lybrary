@@ -7,6 +7,22 @@
       "price": 331,
       "img": "https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_200/18922333-agata-kristi-ubiystvo-v-vostochnom-ekspresse-18922333.jpg",
       "id": "w8b47d13c"
+    },
+    {
+      "title": "Мастер и Маргарита",
+      "author": "Михаил Булгаков",
+      "category": "Роман",
+      "price": 298,
+      "img": "https://upload.wikimedia.org/wikipedia/ru/a/aa/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80_%D0%B8_%D0%9C%D0%B0%D1%80%D0%B3%D0%B0%D1%80%D0%B8%D1%82%D0%B0_%28%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80_%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%29.jpg",
+      "id": "uo8r81syu"
+    },
+    {
+      "title": "Дюна",
+      "author": "Фрэнк Герберт",
+      "category": "Фантастика",
+      "price": 1000,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/71MBvBhzu3L.jpg",
+      "id": "048p4ya33"
     }
   ]
 }

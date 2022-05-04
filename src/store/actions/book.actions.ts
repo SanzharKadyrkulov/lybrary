@@ -7,14 +7,14 @@ import {
 	getOneBookSuccess,
 	setBooksLoading,
 } from '../slices/book.slice';
-import { generateId } from '../../utils/functions';
+import { generateId, sortByAlphabet } from '../../utils/functions';
 
 export const getBooks = () => async (dispatch: Dispatch<any>) => {
 	try {
 		dispatch(setBooksLoading());
 		const { data } = await axios.get<IBook[]>(`${API}`);
 
-		dispatch(getBooksSuccess(data));
+		dispatch(getBooksSuccess(data.sort(sortByAlphabet)));
 	} catch (err) {
 		console.log(err);
 	}
