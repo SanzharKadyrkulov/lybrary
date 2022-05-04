@@ -1,0 +1,12 @@
+{
+	"books": [
+		{
+			"title": "Убийство в Восточном экспрессе",
+			"category": "Детектив",
+			"price": 100,
+			"img": "https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_200/18922333-agata-kristi-ubiystvo-v-vostochnom-ekspresse-18922333.jpg",
+			"id": 1,
+			"author": "Агата Кристи"
+		}
+	]
+}
