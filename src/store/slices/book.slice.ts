@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IBook, IBookState } from '../../types/book.types';
 
 const initialState: IBookState = {
-	bots: [],
+	books: [],
 	error: null,
 	loading: false,
 };
@@ -13,7 +13,7 @@ export const bookSlice = createSlice({
 		getBooksSuccess: (state, action: PayloadAction<IBook[]>) => ({
 			...state,
 			error: null,
-			bots: action.payload,
+			books: action.payload,
 		}),
 		setBooksLoading: (state) => ({ ...state, loading: true }),
 		setBooksError: (state, action: PayloadAction<string>) => ({

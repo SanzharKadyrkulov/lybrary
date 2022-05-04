@@ -7,7 +7,7 @@ export interface IBook {
 	author: string;
 }
 export interface IBookState {
-	bots: IBook[];
+	books: IBook[];
 	error: string | null;
 	loading: boolean;
 }
