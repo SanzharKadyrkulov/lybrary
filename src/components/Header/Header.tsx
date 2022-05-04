@@ -55,6 +55,16 @@ export default function Header() {
 					>
 						WhishList
 					</Typography>
+					<Typography
+						// onClick={() => navigate('/wish')}
+						to='/admin'
+						variant='h6'
+						component={NavLink}
+						className='nav-link'
+						sx={{ flexGrow: 1, cursor: 'pointer' }}
+					>
+						Admin
+					</Typography>
 					<div>
 						<IconButton
 							size='large'

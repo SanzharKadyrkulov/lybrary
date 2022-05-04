@@ -1,5 +1,5 @@
 export interface IBook {
-	id: number;
+	id: string;
 	title: string;
 	category: string;
 	img: string;
@@ -8,6 +8,7 @@ export interface IBook {
 }
 export interface IBookState {
 	books: IBook[];
+	book: IBook | null;
 	error: string | null;
 	loading: boolean;
 }

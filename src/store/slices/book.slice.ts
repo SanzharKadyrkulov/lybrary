@@ -3,6 +3,7 @@ import { IBook, IBookState } from '../../types/book.types';
 
 const initialState: IBookState = {
 	books: [],
+	book: null,
 	error: null,
 	loading: false,
 };
@@ -13,7 +14,14 @@ export const bookSlice = createSlice({
 		getBooksSuccess: (state, action: PayloadAction<IBook[]>) => ({
 			...state,
 			error: null,
+			loading: false,
 			books: action.payload,
+		}),
+		getOneBookSuccess: (state, action: PayloadAction<IBook>) => ({
+			...state,
+			error: null,
+			loading: false,
+			book: action.payload,
 		}),
 		setBooksLoading: (state) => ({ ...state, loading: true }),
 		setBooksError: (state, action: PayloadAction<string>) => ({
@@ -24,5 +32,9 @@ export const bookSlice = createSlice({
 });
 
 export const bookReducer = bookSlice.reducer;
-export const { getBooksSuccess, setBooksError, setBooksLoading } =
-	bookSlice.actions;
+export const {
+	getBooksSuccess,
+	getOneBookSuccess,
+	setBooksError,
+	setBooksLoading,
+} = bookSlice.actions;
