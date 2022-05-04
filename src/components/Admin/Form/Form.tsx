@@ -102,9 +102,7 @@ const Form = ({ saveValues, compForEdit, forEditVal, getOneProduct }: any) => {
 					>
 						<MenuItem value={'Детектив'}>Детектив</MenuItem>
 						<MenuItem value={'Роман'}>Роман</MenuItem>
-						<MenuItem value={'Поэзия'}>Поэзия</MenuItem>
 						<MenuItem value={'Фантастика'}>Фантастика</MenuItem>
-						<MenuItem value={'Психология'}>Психология</MenuItem>
 					</Select>
 				</FormControl>
 				<TextField

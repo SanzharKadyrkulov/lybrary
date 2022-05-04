@@ -1,5 +1,7 @@
 import { Container, Grid } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import Filter from '../../components/Filter/Filter';
 import OneBook from '../../components/OneBook/OneBook';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -13,12 +15,14 @@ const Home = () => {
 	}, []);
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const [type, setType] = useState(searchParams.get('type') || 'all');
+	const [category, setCategory] = useState(
+		searchParams.get('category') || 'all'
+	);
 
 	useEffect(() => {
-		if (searchParams.get('type')) {
+		if (searchParams.get('category')) {
 			setSearchParams({
-				type: type,
+				category: category,
 			});
 		} else {
 			setSearchParams({});
@@ -26,31 +30,22 @@ const Home = () => {
 	}, []);
 
 	useEffect(() => {
-		getProducts();
+		getBooks();
 	}, [searchParams]);
 
 	useEffect(() => {
-		if (type === 'all') {
-			setSearchParams(paramsNoType());
+		if (category === 'all') {
+			setSearchParams({});
 		} else {
-			setSearchParams(paramsWithType());
+			setSearchParams({ category: category });
 		}
-	}, [page, type, slider]);
-
-	const handleReset = () => {
-		setType('all');
-		setSlider(minSliderValue);
-		setSearchParams({
-			_page: page,
-			_limit: PRODUCTS_LIMIT,
-			price_gte: minSliderValue,
-			q: '',
-		});
-	};
+	}, [category]);
 
 	return (
 		<>
 			<Container maxWidth='lg'>
+				<h4>Oбщее количество книг: {books && books.length}</h4>
+				<Filter category={category} setCategory={setCategory} />
 				<Grid container spacing={4}>
 					{books &&
 						books.length > 0 &&

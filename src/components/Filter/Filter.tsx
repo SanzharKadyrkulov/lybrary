@@ -1,83 +1,50 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import Slider from '@mui/material/Slider';
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
-const Filter = ({ type, setType, setPage, slider, setSlider, handleReset }) => {
-	const [filterDisp, setFilterDisp] = useState(false);
+interface IProps {
+	category: string;
+	setCategory: Dispatch<SetStateAction<string>>;
+}
 
-	const changeDisp = () => {
-		if (filterDisp) {
-			setFilterDisp(false);
-		} else {
-			setFilterDisp(true);
-		}
-	};
-
+const Filter = ({ category, setCategory }: IProps) => {
 	return (
-		<div style={{ textAlign: 'center' }}>
-			<Button
-				sx={{
-					p: 1,
-					m: 1,
-					fontSize: '1rem',
-					fontWeight: '900',
-					color: '#991199',
-				}}
-				onClick={changeDisp}
-			>
-				<h3>Сортировка</h3>
-			</Button>
-			<br />
-			<div
-				style={{ display: filterDisp ? 'block' : 'none', textAlign: 'center' }}
-			>
-				<FormControl>
-					<FormLabel id='demo-radio-buttons-group-label'>Жанр</FormLabel>
-					<RadioGroup
-						aria-labelledby='demo-radio-buttons-group-label'
-						defaultValue='female'
-						name='radio-buttons-group'
-						value={type}
-						onChange={(e) => {
-							setType(e.target.value);
-							setPage(1);
-						}}
-					>
-						<FormControlLabel value='all' control={<Radio />} label='All' />
-						<FormControlLabel
-							value='Детектив'
-							control={<Radio />}
-							label='Детектив'
-						/>
-						<FormControlLabel value='Роман' control={<Radio />} label='Роман' />
-						<FormControlLabel
-							value='Поэзия'
-							control={<Radio />}
-							label='Поэзия'
-						/>
-						<FormControlLabel
-							value='Фантастика'
-							control={<Radio />}
-							label='Фантастика'
-						/>
-						<FormControlLabel
-							value='Психология'
-							control={<Radio />}
-							label='Психология'
-						/>
-					</RadioGroup>
-				</FormControl>
-				<br />
-				<br />
-				<Button onClick={handleReset} variant='outlined'>
-					Reset
-				</Button>
-			</div>
+		<div style={{ textAlign: 'center', margin: '28px 0' }}>
+			<FormControl>
+				<FormLabel id='demo-radio-buttons-group-label'>Жанр</FormLabel>
+				<RadioGroup
+					aria-labelledby='demo-radio-buttons-group-label'
+					defaultValue='all'
+					name='radio-buttons-group'
+					value={category}
+					onChange={(e) => {
+						setCategory(e.target.value);
+					}}
+					sx={{
+						display: 'flex',
+						justifyContent: 'flex-start',
+						flexDirection: 'row',
+						width: '100%',
+					}}
+				>
+					<FormControlLabel value='all' control={<Radio />} label='All' />
+					<FormControlLabel
+						value='Детектив'
+						control={<Radio />}
+						label='Детектив'
+					/>
+					<FormControlLabel value='Роман' control={<Radio />} label='Роман' />
+					<FormControlLabel
+						value='Фантастика'
+						control={<Radio />}
+						label='Фантастика'
+					/>
+				</RadioGroup>
+			</FormControl>
 		</div>
 	);
 };

@@ -12,7 +12,9 @@ import { generateId, sortByAlphabet } from '../../utils/functions';
 export const getBooks = () => async (dispatch: Dispatch<any>) => {
 	try {
 		dispatch(setBooksLoading());
-		const { data } = await axios.get<IBook[]>(`${API}`);
+		const { data } = await axios.get<IBook[]>(
+			`${API}${window.location.search}`
+		);
 
 		dispatch(getBooksSuccess(data.sort(sortByAlphabet)));
 	} catch (err) {
