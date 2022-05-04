@@ -1,0 +1,8 @@
+.nav-link {
+	text-decoration: none;
+	color: white;
+}
+
+.active {
+	color: #4de3b6;
+}
